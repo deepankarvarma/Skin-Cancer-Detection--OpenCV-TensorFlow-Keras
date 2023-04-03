@@ -6,7 +6,7 @@ from keras.models import load_model
 img_size = (224, 224)
 
 # Load the trained model
-model = load_model('yawn_detection_model.h5')
+model = load_model('skin_cancer_detection_model.h5')
 
 # Open the camera stream
 cap = cv2.VideoCapture(0)
@@ -26,9 +26,9 @@ while True:
     # Predict whether the frame contains a yawn or not
     prediction = model.predict(img)
     if prediction[0] > 0.5:
-        label = 'yawn'
+        label = 'Cancer'
     else:
-        label = 'not yawn'
+        label = 'Non_Cancer'
     
     # Draw the label on the frame
     cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)

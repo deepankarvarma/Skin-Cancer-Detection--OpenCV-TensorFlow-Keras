@@ -22,7 +22,7 @@ val_data_gen = ImageDataGenerator(rescale=1./255)
 # Load the images and labels from the data folder
 x = []
 y = []
-for label, folder_name in enumerate(['no yawn', 'yawn']):
+for label, folder_name in enumerate(['Non_Cancer', 'Cancer']):
     folder_path = os.path.join(data_dir, folder_name)
     for img_name in os.listdir(folder_path):
         img_path = os.path.join(folder_path, img_name)
@@ -62,4 +62,4 @@ history = model.fit(train_data_gen.flow(x_train, y_train, batch_size=batch_size)
                     epochs=4, verbose=1)
 
 # Save the model
-model.save('yawn_detection_model.h5')
+model.save('skin_cancer_detection_model.h5')

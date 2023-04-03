@@ -4,7 +4,7 @@ import numpy as np
 from keras.models import load_model
 
 # Load the trained model
-model = load_model('yawn_detection_model.h5')
+model = load_model('skin_cancer_detection_model.h5')
 
 # Define the size of the input images
 img_size = (224, 224)
@@ -18,7 +18,7 @@ def preprocess_image(img):
 
 # Define the Streamlit app
 def app():
-    st.title('Yawn Detection App')
+    st.title('Skin Cancer Detection App')
 
     # Allow the user to upload an image
     uploaded_file = st.file_uploader('Choose an image', type=['jpg', 'jpeg', 'png'])
@@ -32,12 +32,12 @@ def app():
 
         # Make a prediction
         pred = model.predict(img)
-        pred_label = 'Yawning' if pred[0][0] > 0.5 else 'No Yawning'
+        pred_label = 'Cancer' if pred[0][0] > 0.5 else 'Not Cancer'
         pred_prob = pred[0][0]
         
         # Show the prediction result
         st.write(f'Prediction: {pred_label}')
-        st.write(f'Probability Of Yawning: {pred_prob:.2f}')
+        st.write(f'Probability Of Skin Cancer: {pred_prob:.2f}')
 
 # Run the app
 if __name__ == '__main__':
